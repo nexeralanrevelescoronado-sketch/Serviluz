@@ -145,3 +145,54 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .card:hover{transform:translateY(-5px);border-color:rgba(255,180,0,.5)}
 footer a:hover,.crumb a:hover{color:var(--amber)}
 }
+
+/* ===== Animaciones (criterio Emil Kowalski: pocas, con propósito) ===== */
+/* 1. Entrada del hero: una ola, H1 primero. En subpáginas el H1 no se mueve (es el LCP) */
+@keyframes rise{from{opacity:0;transform:translateY(var(--d,10px))}to{opacity:1;transform:none}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+.stage.s1 .eyebrow,.sub .eyebrow{animation:fadein .4s cubic-bezier(.23,1,.32,1) both}
+@keyframes lift{from{transform:translateY(14px)}to{transform:none}}
+.stage.s1 h1{animation:lift .6s cubic-bezier(.23,1,.32,1) both}
+.stage.s1 p,.sub p.lead{--d:10px;animation:rise .5s cubic-bezier(.23,1,.32,1) 90ms both}
+.stage.s1 .btns,.sub .btns{--d:6px;animation:rise .5s cubic-bezier(.23,1,.32,1) 160ms both}
+
+/* 2. Pasos: la "corriente" corre de un paso al siguiente y los va encendiendo */
+.steps{grid-template-columns:repeat(3,1fr)}
+@media(min-width:961px){.step{padding:88px 28px 28px}}
+@media(max-width:960px){.steps{grid-template-columns:1fr}}
+.step::before{background:var(--panel2);color:var(--amber);box-shadow:inset 0 0 0 2px rgba(255,180,0,.45);transition:background-color .25s cubic-bezier(.23,1,.32,1),color .25s cubic-bezier(.23,1,.32,1),box-shadow .25s cubic-bezier(.23,1,.32,1)}
+.step:not(:last-child)::after{content:"";position:absolute;z-index:1;background:linear-gradient(90deg,var(--amber),var(--amber2));transform-origin:left;transform:scaleX(0);transition:transform .38s cubic-bezier(.77,0,.175,1);left:68px;top:45px;height:2px;right:-42px}
+@media(max-width:960px){.step:not(:last-child)::after{left:45px;top:68px;width:2px;height:auto;right:auto;bottom:-42px;transform-origin:top;transform:scaleY(0);background:linear-gradient(180deg,var(--amber),var(--amber2))}}
+.steps.go .step::before{background:var(--amber);color:#0a0b0d;box-shadow:0 0 0 6px rgba(255,180,0,.14),0 0 22px rgba(255,170,0,.55)}
+.steps.go .step:not(:last-child)::after{transform:none}
+.steps.go .step:nth-child(1)::after{transition-delay:80ms}
+.steps.go .step:nth-child(2)::before{transition-delay:420ms}
+.steps.go .step:nth-child(2)::after{transition-delay:440ms}
+.steps.go .step:nth-child(3)::before{transition-delay:790ms}
+
+/* 3. Preguntas: abren con su altura real y el + gira a × */
+summary::after{content:"+";transition:transform .2s cubic-bezier(.23,1,.32,1)}
+details[open] summary::after{content:"+";transform:rotate(45deg)}
+@supports (interpolate-size:allow-keywords){
+ :root{interpolate-size:allow-keywords}
+ details::details-content{height:0;overflow:hidden;opacity:0;transition:height .25s cubic-bezier(.23,1,.32,1),opacity .2s cubic-bezier(.23,1,.32,1),content-visibility .25s allow-discrete}
+ details[open]::details-content{height:auto;opacity:1}
+}
+
+/* 4. WhatsApp: respuesta al tocar + aviso discreto (3 veces, luego se calla) */
+.fab a{transition:transform .14s cubic-bezier(.23,1,.32,1)}
+.fab a:active{transform:scale(.94)}
+.fab .w{position:relative}
+.fab .w::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 2px #25d366;opacity:0;pointer-events:none;animation:ring 7s cubic-bezier(.23,1,.32,1) 2.5s 3}
+@keyframes ring{0%{opacity:.7;transform:scale(1)}16%{opacity:0;transform:scale(1.55)}100%{opacity:0;transform:scale(1.55)}}
+.fab.quiet .w::after{animation:none}
+
+@media(prefers-reduced-motion:reduce){
+ .stage.s1 .eyebrow,.sub .eyebrow,.stage.s1 p,.sub p.lead,.stage.s1 .btns,.sub .btns{animation:fadein .3s ease both}
+ .stage.s1 h1{animation:none}
+ .step:not(:last-child)::after{transition:none}
+ .steps.go .step::before{transition-delay:0ms!important}
+ details::details-content{transition:opacity .2s}
+ .fab .w::after{animation:none}
+ summary::after{transition:none}
+}

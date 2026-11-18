@@ -27,6 +27,14 @@ if(hasIO){
  $$('.rv').forEach(function(el){io.observe(el)});
 }else{$$('.rv').forEach(function(el){el.classList.add('in')})}
 
+/* pasos: la corriente arranca cuando ya se ven */
+$$('.steps').forEach(function(st){
+ if(!hasIO||reduce){st.classList.add('go');return}
+ new IntersectionObserver(function(es,o){if(es[0].isIntersecting){o.disconnect();setTimeout(function(){st.classList.add('go')},200)}},{threshold:.45}).observe(st);
+});
+/* el aviso del WhatsApp se calla en cuanto la persona toca algo */
+var fab=$('.fab');if(fab){var q=function(){fab.classList.add('quiet')};fab.addEventListener('pointerdown',q,{once:true})}
+
 /* videos: version cel o escritorio */
 $$('video[data-src]:not([data-scrub])').forEach(function(v){
  v.src=mobile&&v.dataset.srcM?v.dataset.srcM:v.dataset.src;
