@@ -37,9 +37,11 @@ $$('video[data-src]:not([data-scrub])').forEach(function(v){
 $$('video[data-auto]').forEach(function(v){
  if(reduce||lite){v.removeAttribute('autoplay');v.pause();return}
  if(!hasIO){var p0=v.play();if(p0&&p0.catch)p0.catch(function(){});return}
+ /* se precarga antes de llegar y arranca apenas asoma */
+ new IntersectionObserver(function(es,o){if(es[0].isIntersecting){v.preload='auto';o.disconnect()}},{rootMargin:'600px 0px'}).observe(v);
  new IntersectionObserver(function(es){es.forEach(function(e){
   if(e.isIntersecting){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause();
- })},{threshold:.35}).observe(v);
+ })},{threshold:.01}).observe(v);
 });
 
 /* scroll-scrub */
@@ -49,7 +51,9 @@ var st=(sc.dataset.stops||'.3,.68').split(',').map(Number);
 var target=0,cur=0,dur=0,ready=false,visible=true,raf=0,lastStage=-1;
 
 var lastHint=-1,lastP=-1,span=0;
-function measure(){span=sc.offsetHeight-window.innerHeight}measure();
+var stick=$('.stick',sc);
+/* alto fijo (svh): no brinca cuando Safari esconde la barra */
+function measure(){span=sc.offsetHeight-(stick?stick.offsetHeight:window.innerHeight)}measure();
 window.addEventListener('resize',measure,{passive:true});
 function setStage(p){
  var i=p<st[0]?0:p<st[1]?1:2;
