@@ -196,3 +196,13 @@ details[open] summary::after{content:"+";transform:rotate(45deg)}
  .fab .w::after{animation:none}
  summary::after{transition:none}
 }
+
+/* ===== Momentos (taste-skill): tokens con la marca Serví luz ===== */
+:root{--ink:var(--text);--muted:var(--mut);--surface:var(--panel2);--accent:var(--amber);--s-2:8px;--s-3:12px;--s-4:16px;--s-5:24px;--s-6:32px;--s-7:48px;--r-md:14px;--r-lg:var(--r);--t-h3:clamp(1.45rem,3vw,2rem);--t-lead:1.15rem;--t-small:.8rem;--font-display:inherit;--font-text:inherit;--display-weight:800;--display-tracking:-.02em;--nav:70px}
+[data-moment="photo-chapters"] .mo-ph__head h2{margin:0}
+[data-moment="photo-chapters"] .mo-ph__head p{color:var(--mut)}
+[data-moment="photo-chapters"].is-live .mo-ph__panel{border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+[data-moment="photo-chapters"].is-live .mo-ph__count{color:var(--amber)}
+.develop{margin:0;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.develop>img{display:block;width:100%;height:100%;object-fit:cover}
+@media(max-width:860px){[data-moment="photo-chapters"].is-live .mo-ph__panel{right:84px}}
