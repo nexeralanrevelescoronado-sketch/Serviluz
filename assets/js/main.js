@@ -21,7 +21,8 @@ $$('video[data-auto]').forEach(function(v){
 var sc=$('.scrub');if(!sc)return;
 var v=$('video',sc),bar=$('.bar',sc),hint=$('.scroll-hint',sc),stages=$$('.stage',sc);
 var target=0,cur=0,dur=0,ready=false;
-function setStage(p){var i=p<.30?0:p<.68?1:2;stages.forEach(function(s,k){s.classList.toggle('on',k===i)});if(hint)hint.style.opacity=p>.04?0:1;if(bar)bar.style.width=(p*100)+'%'}
+var st=(sc.dataset.stops||'.3,.68').split(',').map(Number);
+function setStage(p){var i=p<st[0]?0:p<st[1]?1:2;stages.forEach(function(s,k){s.classList.toggle('on',k===i)});if(hint)hint.style.opacity=p>.04?0:1;if(bar)bar.style.width=(p*100)+'%'}
 function prog(){var r=sc.getBoundingClientRect(),h=sc.offsetHeight-window.innerHeight;return Math.min(1,Math.max(0,-r.top/h))}
 function init(){dur=v.duration||0;ready=dur>0;if(reduce&&ready){v.currentTime=dur-.05;setStage(1);return}tick()}
 function tick(){
@@ -29,6 +30,7 @@ function tick(){
  if(ready){target=p*(dur-.05);cur+=(target-cur)*.18;if(Math.abs(cur-v.currentTime)>.012){try{v.currentTime=cur}catch(e){}}}
  requestAnimationFrame(tick)
 }
+if(mobile&&v.dataset.posterM)v.poster=v.dataset.posterM;
 v.src=mobile?v.dataset.srcM:v.dataset.src;v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';
 v.addEventListener('loadedmetadata',init);
 /* iOS: despertar el decodificador */
