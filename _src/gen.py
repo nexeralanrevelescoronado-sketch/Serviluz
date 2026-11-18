@@ -72,7 +72,7 @@ def blog_teaser():
 
 def jsonld(extra=None):
     d={"@context":"https://schema.org","@type":"Electrician","name":"Serví luz","url":BASE+"/","telephone":"+52"+TEL,
-       "image":BASE+"/assets/img/og.jpg","logo":BASE+"/assets/img/favicon.svg",
+       "image":BASE+"/assets/img/og.jpg","logo":BASE+"/assets/img/icon-512.png",
        "description":"Servicio express con 7 años de experiencia. Electricistas en Guadalajara, Zapopan, Tonalá, Tlaquepaque y todo Jalisco: instalaciones eléctricas residenciales, comerciales, para restaurantes e industriales.",
        "priceRange":"$$",
        "areaServed":[{"@type":"City","name":z} for z in ZONAS]+[{"@type":"AdministrativeArea","name":"Jalisco"}],
@@ -86,12 +86,12 @@ def jsonld(extra=None):
 NAV=[('index.html','Inicio','/'),('restaurantes.html','Restaurantes','/restaurantes/'),('residencias.html','Casas','/residencias/'),('industrial.html','Industrial','/industrial/'),('blog.html','Blog','/blog/')]
 def header(cur):
     items=''.join('<a href="%s"%s>%s</a>'%(p,' aria-current="page"' if cur==h else '',t) for h,t,p in NAV)
-    return f'''<a class="skip" href="#contenido">Saltar al contenido</a><header class="hdr"><div class="wrap"><a class="logo" href="/" aria-label="Serví luz, inicio"><img src="/assets/img/logo.svg" alt="Serví luz" width="152" height="38"></a>
+    return f'''<a class="skip" href="#contenido">Saltar al contenido</a><header class="hdr"><div class="wrap"><a class="logo" href="/" aria-label="Serví luz, inicio"><img src="/assets/img/logo.webp" alt="Serví luz" width="185" height="38"></a>
 <nav class="nav" id="nav" aria-label="Principal">{items}<a href="#contacto">Contacto</a><a class="call" href="tel:+52{TEL}">Llamar {TELF}</a></nav>
 <button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">☰</button></div></header>'''
 
 def footer():
-    return f'''<footer><div class="wrap"><div class="cols"><div><img src="/assets/img/logo.svg" alt="Serví luz" width="152" height="38"><p style="margin-top:14px;max-width:34ch">Electricistas en Guadalajara, Zapopan, Tonalá, Tlaquepaque y todo Jalisco. Casas, restaurantes, negocios e industria.</p></div>
+    return f'''<footer><div class="wrap"><div class="cols"><div><img src="/assets/img/logo.webp" alt="Serví luz" width="204" height="42"><p style="margin-top:14px;max-width:34ch">Electricistas en Guadalajara, Zapopan, Tonalá, Tlaquepaque y todo Jalisco. Casas, restaurantes, negocios e industria.</p></div>
 <div><p class="fh">Servicios</p><ul><li><a href="/restaurantes/">Electricista para restaurantes</a></li><li><a href="/residencias/">Casas y residencias</a></li><li><a href="/industrial/">Industrial y negocios</a></li><li><a href="/blog/">Blog de consejos eléctricos</a></li></ul></div>
 <div><p class="fh">Contacto</p><ul><li><a href="tel:+52{TEL}">📞 {TELF}</a></li><li><a href="{wa('Hola Serví luz, necesito un electricista')}" rel="noopener">💬 WhatsApp</a></li><li>Todo Jalisco</li></ul></div></div>
 <p class="legal">© <span id="y">2026</span> Serví luz. Servicios eléctricos en Jalisco.</p></div></footer>
@@ -127,7 +127,7 @@ def head(title,desc,path,extra_ld=None,og='/assets/img/og.jpg',pre='',mo=()):
 <link rel="canonical" href="{BASE}{path}">
 <meta name="theme-color" content="#0a0b0d">
 <meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/favicon-48.png" type="image/png" sizes="48x48"><link rel="icon" href="/assets/img/icon-192.png" type="image/png" sizes="192x192"><link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website"><meta property="og:locale" content="es_MX"><meta property="og:site_name" content="Serví luz">
 <meta property="og:title" content="{title}"><meta property="og:description" content="{desc}">
 <meta property="og:url" content="{BASE}{path}"><meta property="og:image" content="{BASE}{og}">
@@ -297,7 +297,7 @@ def blog_pages():
         art={"@context":"https://schema.org","@type":"BlogPosting","headline":p['title'],"description":p['desc'],"image":[BASE+'/assets/img/'+n+'.webp'],
              "datePublished":p['date'],"dateModified":p.get('updated',p['date']),"inLanguage":"es-MX","mainEntityOfPage":url,"wordCount":p['words'],
              "author":{"@type":"Organization","name":"Serví luz","url":BASE+"/"},
-             "publisher":{"@type":"Organization","name":"Serví luz","logo":{"@type":"ImageObject","url":BASE+"/assets/img/favicon.svg"}}}
+             "publisher":{"@type":"Organization","name":"Serví luz","logo":{"@type":"ImageObject","url":BASE+"/assets/img/icon-512.png"}}}
         ld=[bc(('Inicio','/'),('Blog','/blog/'),(p['title'],p['path'])),art]
         if p['faq']: ld.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in p['faq']]})
         pre=(f'<link rel="preload" as="image" href="/assets/img/{n}-m.webp" media="(max-width:768px)" fetchpriority="high"><link rel="preload" as="image" href="/assets/img/{n}.webp" media="(min-width:769px)" fetchpriority="high">'
