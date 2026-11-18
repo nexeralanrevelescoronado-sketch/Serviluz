@@ -208,15 +208,26 @@ details[open] summary::after{content:"+";transform:rotate(45deg)}
 @media(max-width:860px){[data-moment="photo-chapters"].is-live .mo-ph__panel{right:84px}}
 
 /* ===== Serie de focos (Motion): se prenden uno por uno con el scroll ===== */
-.serie{--up:240px;position:absolute;left:0;right:0;top:calc(var(--up) * -1);height:calc(var(--up) + 300px);overflow:hidden;pointer-events:none;z-index:2;contain:layout style}
-.serie-w{position:absolute;left:0;top:var(--up);width:100%;display:block}
-.fo{position:absolute;width:24px;height:44px;margin-left:-12px}
+/* canal a la izquierda para el cable; va en CSS fijo (no depende del script) para que nada se recorra al cargar */
+main>section:not(.scrub):not(.sub):not(.nofo):not([data-moment]):not([style*="padding:46px"])>.wrap{padding-left:46px}
+@media(min-width:701px){main>section:not(.scrub):not(.sub):not(.nofo):not([data-moment]):not([style*="padding:46px"])>.wrap{padding-left:66px}}
+@media(min-width:1281px){main>section:not(.scrub):not(.sub):not(.nofo):not([data-moment]):not([style*="padding:46px"])>.wrap{padding-left:20px}}
+.serie{--gx:24px;position:absolute;inset:0;pointer-events:none;z-index:2;contain:layout style}
+@media(min-width:701px){.serie{--gx:30px}}
+@media(min-width:1281px){.serie{--gx:calc(50vw - 612px)}}
+/* penumbra: degradado que se recorre + bloque oscuro que se estira (solo transform) */
+.serie-v{position:absolute;inset:0;overflow:hidden}
+.ve-f,.ve-s{position:absolute;left:0;right:0}
+.ve-f{top:0;height:150px;background:linear-gradient(180deg,rgba(5,6,8,0),rgba(5,6,8,.9))}
+.ve-s{bottom:0;height:100px;background:rgba(5,6,8,.9);transform-origin:50% 100%}
+.serie-w{position:absolute;left:calc(var(--gx) - 22px);top:0;display:block;overflow:visible}
+.fo{position:absolute;left:var(--gx);width:24px;height:44px;margin-left:-12px}
 .fo-b{position:relative;display:block;z-index:2}
 .fo-on{opacity:0}
-.fo-g,.fo-w{position:absolute;left:50%;opacity:0;border-radius:50%;pointer-events:none}
-.fo-g{top:30px;width:96px;height:96px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,214,120,.62) 0,rgba(255,170,50,.2) 34%,rgba(255,150,30,0) 68%);z-index:1}
-.fo-w{top:-205px;width:360px;height:470px;transform:translateX(-50%);transform-origin:50% 50%;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(255,184,70,.2) 0,rgba(255,160,40,.085) 42%,rgba(255,150,30,0) 100%)}
-@media(min-width:700px){.fo{width:28px;height:51px;margin-left:-14px}.fo-b{width:28px;height:51px}.fo-g{top:35px;width:120px;height:120px}.fo-w{width:520px;height:580px;top:-255px}.serie{--up:292px;height:calc(var(--up) + 380px)}}
+.fo-g,.fo-w{position:absolute;opacity:0;pointer-events:none}
+.fo-g{left:50%;top:30px;width:104px;height:104px;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,214,120,.66) 0,rgba(255,170,50,.22) 34%,rgba(255,150,30,0) 68%);z-index:1}
+/* la luz que se abre hacia la derecha */
+.fo-w{left:calc(12px - var(--gx));top:-190px;width:min(97vw,920px);height:440px;transform-origin:var(--gx) 50%;background:radial-gradient(ellipse 100% 50% at var(--gx) 50%,rgba(255,190,80,.2) 0,rgba(255,165,45,.075) 45%,rgba(255,150,30,0) 100%)}
 /* la luz llega a la sección cuando su serie queda completa */
 .has-serie h2 .amber{transition:text-shadow .6s cubic-bezier(.23,1,.32,1)}
 .has-serie .lit h2 .amber{text-shadow:0 0 26px rgba(255,170,0,.5)}
