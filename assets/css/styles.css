@@ -239,3 +239,16 @@ main>section:not(.scrub):not(.sub):not(.nofo):not([data-moment]):not([style*="pa
 .has-serie .lit :is(.card,.fact,details):nth-child(n+4)::before{transition-delay:150ms}
 @media(prefers-reduced-motion:reduce){.has-serie h2 .amber,.has-serie :is(.card,.fact,details)::before{transition-duration:.2s;transition-delay:0ms!important}}
 @media print{.serie{display:none}}
+/* blog */
+.post{display:flex;flex-direction:column;justify-content:space-between;min-height:230px}
+.post h3{font-size:1.2rem;line-height:1.25;margin:8px 0 10px}
+.post p{color:var(--mut);font-size:.98rem}
+.sub .meta{margin-top:20px;font-size:.88rem;color:var(--mut)}
+.art .prose{font-size:1.06rem;line-height:1.75}
+.art .prose h2{font-size:clamp(1.4rem,3.6vw,1.9rem);margin:1.9em 0 .6em;line-height:1.2}
+.art .prose h3{font-size:1.1rem;margin:1.4em 0 .4em}
+.art .prose ol{padding-left:1.3em;margin:0 0 1.2em}
+.art .prose ol li{margin-bottom:.55em;padding-left:.2em}
+.art .prose .checks{margin:0 0 1.2em}
+.art .prose a:not(.btn){color:var(--amber);text-decoration:underline;text-underline-offset:3px}
+.art .prose details{margin-top:12px}
