@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://serviluz.onrender.com/sitemap.xml

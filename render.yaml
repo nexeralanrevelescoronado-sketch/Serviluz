@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: serviluz
+    runtime: static
+    buildCommand: echo "static"
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    routes:
+      - type: rewrite
+        source: /restaurantes
+        destination: /restaurantes.html
+      - type: rewrite
+        source: /residencias
+        destination: /residencias.html
+      - type: rewrite
+        source: /industrial
+        destination: /industrial.html
+    headers:
+      - path: /assets/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
