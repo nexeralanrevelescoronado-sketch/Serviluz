@@ -1,6 +1,6 @@
 import json, os
 OUT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BASE='https://serviluz.onrender.com'
+BASE='https://serviluz.com.mx'
 TEL='3328272152'; TELF='33 2827 2152'
 WA='https://wa.me/52'+TEL+'?text='
 def wa(t): return WA+t.replace(' ','%20')
@@ -71,7 +71,7 @@ def blog_teaser():
     return '<section><div class="wrap"><span class="eyebrow rv">Blog</span><h2 class="rv">Consejos de electricistas para tu casa y tu negocio</h2><div class="grid g3">'+''.join(post_card(p) for p in POSTS[:3])+'</div><p class="rv" style="margin-top:22px"><a class="btn btn-ghost" href="/blog/">Ver todos los artículos</a></p></div></section>\n'
 
 def jsonld(extra=None):
-    d={"@context":"https://schema.org","@type":"Electrician","name":"Serví luz","url":BASE+"/","telephone":"+52"+TEL,
+    d={"@context":"https://schema.org","@type":"Electrician","name":"Serví luz","@id":BASE+"/#negocio","url":BASE+"/","telephone":"+52"+TEL,"address":{"@type":"PostalAddress","addressLocality":"Guadalajara","addressRegion":"Jalisco","addressCountry":"MX"},
        "image":BASE+"/assets/img/og.jpg","logo":BASE+"/assets/img/icon-512.png",
        "description":"Servicio express con 7 años de experiencia. Electricistas en Guadalajara, Zapopan, Tonalá, Tlaquepaque y todo Jalisco: instalaciones eléctricas residenciales, comerciales, para restaurantes e industriales.",
        "priceRange":"$$",
@@ -79,7 +79,7 @@ def jsonld(extra=None):
        "knowsAbout":["Instalaciones eléctricas","Diseño eléctrico","Tableros eléctricos","Corto circuito","Iluminación LED","Tierras físicas"],
        "contactPoint":{"@type":"ContactPoint","telephone":"+52"+TEL,"contactType":"customer service","availableLanguage":"es"}}
     d.pop("priceRange")
-    out=[d]
+    out=[d,{"@context":"https://schema.org","@type":"WebSite","name":"Serví luz","url":BASE+"/","inLanguage":"es-MX","publisher":{"@id":BASE+"/#negocio"}}]
     if extra: out+=extra
     return '\n'.join('<script type="application/ld+json">'+json.dumps(x,ensure_ascii=False)+'</script>' for x in out)
 
@@ -131,7 +131,9 @@ def head(title,desc,path,extra_ld=None,og='/assets/img/og.jpg',pre='',mo=()):
 <meta property="og:type" content="website"><meta property="og:locale" content="es_MX"><meta property="og:site_name" content="Serví luz">
 <meta property="og:title" content="{title}"><meta property="og:description" content="{desc}">
 <meta property="og:url" content="{BASE}{path}"><meta property="og:image" content="{BASE}{og}">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Serví luz, electricistas en Guadalajara y todo Jalisco">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{title}"><meta name="twitter:description" content="{desc}"><meta name="twitter:image" content="{BASE}{og}">
+<link rel="alternate" hreflang="es-MX" href="{BASE}{path}"><meta name="format-detection" content="telephone=yes">
 {pre}<link rel="stylesheet" href="/assets/css/styles.css">
 {mo_head(mo)}
 {jsonld(extra_ld)}
@@ -177,8 +179,8 @@ def faq_ld():
     return {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in FAQ]}
 
 # ---------- HOME
-home=head('Electricista en Guadalajara, Zapopan, Tonalá y Tlaquepaque | Serví luz',
- 'Electricistas en Guadalajara y todo Jalisco con 7 años de experiencia. Servicio express, te atendemos de inmediato. Casas, restaurantes, negocios e industria. WhatsApp 33 2827 2152.','/',[faq_ld()],mo=('photo-chapters',),pre='<link rel="preload" as="image" href="/assets/img/foco-poster.webp" media="(min-width:769px) and (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="/assets/img/foco-poster-m.webp" media="(max-width:768px),(orientation:portrait)" fetchpriority="high">')
+home=head('Electricista en Guadalajara, Zapopan y Tlaquepaque | Serví luz',
+ 'Electricistas en Guadalajara y todo Jalisco con 7 años de experiencia. Servicio express para casas, restaurantes y negocios. WhatsApp 33 2827 2152.','/',[faq_ld()],mo=('photo-chapters',),pre='<link rel="preload" as="image" href="/assets/img/foco-poster.webp" media="(min-width:769px) and (orientation:landscape)" fetchpriority="high"><link rel="preload" as="image" href="/assets/img/foco-poster-m.webp" media="(max-width:768px),(orientation:portrait)" fetchpriority="high">')
 home+=header('index.html')+f'''<main id="contenido">
 <section class="scrub" aria-label="Serví luz, electricistas en Jalisco"><div class="stick">
 <picture class="posterimg"><source media="(max-width:768px),(orientation:portrait)" srcset="/assets/img/foco-poster-m.webp"><img src="/assets/img/foco-poster.webp" data-end="/assets/img/foco-end.webp" data-end-m="/assets/img/foco-end-m.webp" alt="" width="1280" height="720" fetchpriority="high" decoding="async"></picture>
@@ -302,7 +304,7 @@ def blog_pages():
         if p['faq']: ld.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in p['faq']]})
         pre=(f'<link rel="preload" as="image" href="/assets/img/{n}-m.webp" media="(max-width:768px)" fetchpriority="high"><link rel="preload" as="image" href="/assets/img/{n}.webp" media="(min-width:769px)" fetchpriority="high">'
              f'<style>.sub{{--img:url(/assets/img/{n}-m.webp)}}@media(min-width:769px){{.sub{{--img:url(/assets/img/{n}.webp)}}}}</style>'+RSS_LINK)
-        h=head(p['title']+' | Serví luz',p['desc'],p['path'],ld,pre=pre).replace('og:type" content="website"','og:type" content="article"')
+        h=head(p['title']+(' | Serví luz' if len(p['title'])<=46 else ''),p['desc'],p['path'],ld,pre=pre).replace('og:type" content="website"','og:type" content="article"')
         h=h.replace('<meta name="twitter:card"',f'<meta property="article:published_time" content="{p["date"]}"><meta name="twitter:card"',1)
         s=h+header('blog.html')
         s+=f'<main id="contenido"><section class="sub"><div class="wrap"><p class="crumb"><a href="/">Inicio</a> › <a href="/blog/">Blog</a> › {p["cat"]}</p><span class="eyebrow">{p["cat"]}</span><h1>{p["title"]}</h1><p class="lead">{p["desc"]}</p><p class="meta"><time datetime="{p["date"]}">{fdate(p["date"])}</time> · {p["min"]} min de lectura · Por Serví luz</p></div></section>'
@@ -324,7 +326,7 @@ blog_pages()
 # 404, robots, sitemap, render.yaml
 open(OUT+'/404.html','w').write(head('Página no encontrada | Serví luz','Página no encontrada','/404.html').replace('index,follow','noindex')+header('')+f'<main id="contenido"><section class="sub"><div class="wrap"><h1>Se fue la luz en esta página <span class="amber">⚡</span></h1><p class="lead">No encontramos lo que buscas, pero el servicio sigue prendido.</p><div class="btns"><a class="btn btn-primary" href="/">Ir al inicio</a><a class="btn btn-wa" href="{wa("Hola Serví luz")}">💬 WhatsApp</a></div></div></section></main>'+footer()+'</body></html>')
 open(OUT+'/robots.txt','w').write(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n')
-open(OUT+'/sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{BASE}{p}</loc><changefreq>monthly</changefreq><priority>{pr}</priority></url>\n' for p,pr in [('/','1.0'),('/restaurantes/','0.9'),('/residencias/','0.9'),('/industrial/','0.9'),('/blog/','0.8')])+''.join(f'<url><loc>{BASE}{q["path"]}</loc><lastmod>{q.get("updated",q["date"])}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>\n' for q in POSTS)+'</urlset>\n')
+open(OUT+'/sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{BASE}{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod><changefreq>monthly</changefreq><priority>{pr}</priority></url>\n' for p,pr in [('/','1.0'),('/restaurantes/','0.9'),('/residencias/','0.9'),('/industrial/','0.9'),('/blog/','0.8')])+''.join(f'<url><loc>{BASE}{q["path"]}</loc><lastmod>{q.get("updated",q["date"])}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>\n' for q in POSTS)+'</urlset>\n')
 open(OUT+'/render.yaml','w').write('''services:
   - type: web
     name: serviluz
