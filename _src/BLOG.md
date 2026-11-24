@@ -21,6 +21,7 @@ Sitio estático generado con `python3 _src/gen.py` (escribe en la raíz del repo
 5. `python3 _src/gen.py`, revisar, commit, push y disparar deploy en Render (autoDeploy NO se dispara con el push): servicio `srv-dbuk6k2jnfac73dgjmvg`.
 
 ## Reglas de contenido (honestidad y seguridad)
+- DOMINIO: el único dominio oficial es https://serviluz.com.mx. NUNCA usar serviluz.onrender.com (desactivado, da 404) en artículos, enlaces ni avisos. URL de cada artículo: https://serviluz.com.mx/blog/<slug>/. Enlaces internos siempre relativos (/blog/slug/).
 - Datos reales del negocio: visita $300, 7 años de experiencia, servicio express, tel/WhatsApp 33 2827 2152, Guadalajara, Zapopan, Tonalá, Tlaquepaque y todo Jalisco.
 - NO inventar precios de mercado, porcentajes, estadísticas, normas con número o reseñas. Si hay duda, decir "depende" y ofrecer la visita.
 - Seguridad primero: nunca instruir a abrir tableros, puentear pastillas ni manipular cables. Ante humo o fuego: 911.
