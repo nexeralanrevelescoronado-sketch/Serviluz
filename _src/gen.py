@@ -4,6 +4,41 @@ BASE='https://serviluz.com.mx'
 TEL='3328272152'; TELF='33 2827 2152'
 WA='https://wa.me/52'+TEL+'?text='
 def wa(t): return WA+t.replace(' ','%20')
+
+# ---------- Íconos (estilo Lucide, SVG en línea, sin emojis)
+_P={
+'phone':'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>',
+'chat':'<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/>',
+'zap':'<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',
+'plug':'<path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8z"/>',
+'house':'<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .71-1.53l7-6a2 2 0 0 1 2.58 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+'store':'<path d="m2 7 4.4-4.4A2 2 0 0 1 7.8 2h8.4a2 2 0 0 1 1.4.6L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M2 7h20v3a2 2 0 0 1-2 2 3 3 0 0 1-2-.8 3 3 0 0 1-4 0 3 3 0 0 1-4 0 3 3 0 0 1-4 0A3 3 0 0 1 4 12a2 2 0 0 1-2-2z"/>',
+'factory':'<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/>',
+'utensils':'<path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/>',
+'cable':'<path d="M3 8c5 0 4 8 9 8s4-8 9-8"/><circle cx="3" cy="8" r="1.5"/><circle cx="21" cy="8" r="1.5"/><path d="M3 18h18"/>',
+'sliders':'<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M2 14h4M10 8h4M18 16h4"/>',
+'toggle':'<rect width="20" height="12" x="2" y="6" rx="6"/><circle cx="16" cy="12" r="2.5"/>',
+'bulb':'<path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/>',
+'wrench':'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/>',
+'ground':'<path d="M12 2v11"/><path d="M5 13h14"/><path d="M8 17h8"/><path d="M10.5 21h3"/>',
+'ruler':'<path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/>',
+'pot':'<path d="M2 12h20"/><path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8"/><path d="m4 8 16-4"/><path d="m8.9 6.8-.4-1.8a2 2 0 0 1 1.4-2.4l1.9-.5a2 2 0 0 1 2.4 1.5l.5 1.8"/>',
+'snow':'<path d="M12 2v20"/><path d="m4.9 7 14.2 10"/><path d="M4.9 17 19.1 7"/><path d="m9 3.5 3 2.5 3-2.5"/><path d="m9 20.5 3-2.5 3 2.5"/>',
+'hardhat':'<path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/>',
+'scale':'<path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>',
+'menu':'<path d="M4 6h16M4 12h16M4 18h16"/>',
+'close':'<path d="M18 6 6 18M6 6l12 12"/>',
+}
+def I(n,s=20):
+    c=' i-close' if n=='close' else (' i-menu' if n=='menu' else '')
+    return f'<svg class="i{c}" width="{s}" height="{s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">{_P[n]}</svg>'
+_IG='<svg class="i" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>'
+_TT='<svg class="i" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M16.6 3h-3.2v12.4a2.8 2.8 0 1 1-2.8-2.8c.3 0 .6 0 .8.1V9.4a6 6 0 1 0 5.2 5.9V9a7.6 7.6 0 0 0 4.4 1.4V7.2A4.4 4.4 0 0 1 16.6 3z"/></svg>'
+IG_URL='https://www.instagram.com/servi_luz_soluciones?dmpr=b2xkZHRqZTgyNGZh'
+TT_URL='https://www.tiktok.com/@mst.conejo?_r=1&amp;_t=ZS-9Bcwegzz9Hh'
+def social(cls=''):
+    return (f'<div class="soc{cls}"><a class="ig" href="{IG_URL}" target="_blank" rel="noopener me" aria-label="Instagram de Serví luz" title="Instagram">{_IG}<span>Instagram</span></a>'
+            f'<a class="tt" href="{TT_URL}" target="_blank" rel="noopener me" aria-label="TikTok de Serví luz" title="TikTok">{_TT}<span>TikTok</span></a></div>')
 ZONAS=['Guadalajara','Zapopan','Tonalá','Tlaquepaque']
 
 
@@ -86,16 +121,16 @@ def jsonld(extra=None):
 NAV=[('index.html','Inicio','/'),('restaurantes.html','Restaurantes','/restaurantes/'),('residencias.html','Casas','/residencias/'),('industrial.html','Industrial','/industrial/'),('blog.html','Blog','/blog/')]
 def header(cur):
     items=''.join('<a href="%s"%s>%s</a>'%(p,' aria-current="page"' if cur==h else '',t) for h,t,p in NAV)
-    return f'''<a class="skip" href="#contenido">Saltar al contenido</a><header class="hdr"><div class="wrap"><a class="logo" href="/" aria-label="Serví luz, inicio"><img src="/assets/img/logo.webp" alt="Serví luz" width="185" height="38"></a>
+    return f'''<a class="skip" href="#contenido">Saltar al contenido</a><header class="hdr"><div class="wrap"><div class="brand"><a class="logo" href="/" aria-label="Serví luz, inicio"><img src="/assets/img/logo.webp" alt="Serví luz" width="185" height="38"></a>{social()}</div>
 <nav class="nav" id="nav" aria-label="Principal">{items}<a href="#contacto">Contacto</a><a class="call" href="tel:+52{TEL}">Llamar {TELF}</a></nav>
-<button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">☰</button></div></header>'''
+<button class="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">{I('menu',22)}{I('close',22)}</button></div></header>'''
 
 def footer():
     return f'''<footer><div class="wrap"><div class="cols"><div><img src="/assets/img/logo.webp" alt="Serví luz" width="204" height="42"><p style="margin-top:14px;max-width:34ch">Electricistas en Guadalajara, Zapopan, Tonalá, Tlaquepaque y todo Jalisco. Casas, restaurantes, negocios e industria.</p></div>
 <div><p class="fh">Servicios</p><ul><li><a href="/restaurantes/">Electricista para restaurantes</a></li><li><a href="/residencias/">Casas y residencias</a></li><li><a href="/industrial/">Industrial y negocios</a></li><li><a href="/blog/">Blog de consejos eléctricos</a></li></ul></div>
-<div><p class="fh">Contacto</p><ul><li><a href="tel:+52{TEL}">📞 {TELF}</a></li><li><a href="{wa('Hola Serví luz, necesito un electricista')}" rel="noopener">💬 WhatsApp</a></li><li>Todo Jalisco</li></ul><p style="display:flex;gap:14px;margin-top:12px"><a href="https://www.instagram.com/servi_luz_soluciones?dmpr=b2xkZHRqZTgyNGZh" target="_blank" rel="noopener me" aria-label="Instagram de Serví luz" title="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a><a href="https://www.tiktok.com/@mst.conejo?_r=1&amp;_t=ZS-9Bcwegzz9Hh" target="_blank" rel="noopener me" aria-label="TikTok de Serví luz" title="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3h-3.2v12.4a2.8 2.8 0 1 1-2.8-2.8c.3 0 .6 0 .8.1V9.4a6 6 0 1 0 5.2 5.9V9a7.6 7.6 0 0 0 4.4 1.4V7.2A4.4 4.4 0 0 1 16.6 3z"/></svg></a></p></div></div>
+<div><p class="fh">Contacto</p><ul><li><a href="tel:+52{TEL}">{I('phone')} {TELF}</a></li><li><a href="{wa('Hola Serví luz, necesito un electricista')}" rel="noopener">{I('chat')} WhatsApp</a></li><li>Todo Jalisco</li></ul>{social(' soc-f')}</div></div>
 <p class="legal">© <span id="y">2026</span> Serví luz. Servicios eléctricos en Jalisco.</p></div></footer>
-<div class="fab"><a class="c" href="tel:+52{TEL}" aria-label="Llamar">📞</a><a class="w" href="{wa('Hola Serví luz, necesito un electricista')}" aria-label="WhatsApp" rel="noopener">💬</a></div>
+<div class="fab"><a class="c" href="tel:+52{TEL}" aria-label="Llamar">{I('phone')}</a><a class="w" href="{wa('Hola Serví luz, necesito un electricista')}" aria-label="WhatsApp" rel="noopener">{I('chat')}</a></div>
 <script src="/assets/js/main.js" defer></script>
 <script src="/assets/js/focos.js" defer></script>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>'''
@@ -116,7 +151,7 @@ CAPS=[('cap-falla','Se fue la luz','Se botaron las pastillas o algo huele a quem
 ('cap-luz','La luz regresa','Tu casa o tu negocio funcionando otra vez, seguro y sin sustos.','Cocina de restaurante iluminada después de la reparación eléctrica')]
 HISTORIA='<section data-moment="photo-chapters" aria-labelledby="hist-h"><div class="wrap mo-ph"><div class="mo-ph__head"><span class="eyebrow">Así se vive</span><h2 id="hist-h">De la falla <span class="amber">a la luz</span></h2><p>Lo que pasa desde que nos escribes hasta que todo vuelve a prender.</p></div><ol class="mo-ph__list">'+''.join(f'<li class="mo-ph__ch"><figure class="mo-ph__pic">{pic(n,alt)}</figure><h3>{t}</h3><p>{d}</p></li>' for n,t,d,alt in CAPS)+'</ol></div></section>'
 def develop(eyebrow,h2,p,n,alt,msg):
-    return f'<section class="nofo"><div class="wrap split"><div><span class="eyebrow">{eyebrow}</span><h2>{h2}</h2><p>{p}</p><div class="btns"><a class="btn btn-primary" href="{wa(msg)}" rel="noopener">💬 Escríbenos</a></div></div><figure class="develop" data-moment="picture-develops">{pic(n,alt,1440,810,800)}</figure></div></section>\n'
+    return f'<section class="nofo"><div class="wrap split"><div><span class="eyebrow">{eyebrow}</span><h2>{h2}</h2><p>{p}</p><div class="btns"><a class="btn btn-primary" href="{wa(msg)}" rel="noopener">{I('chat')} Escríbenos</a></div></div><figure class="develop" data-moment="picture-develops">{pic(n,alt,1440,810,800)}</figure></div></section>\n'
 
 def head(title,desc,path,extra_ld=None,og='/assets/img/og.jpg',pre='',mo=()):
     return f'''<!doctype html>
@@ -143,20 +178,20 @@ def head(title,desc,path,extra_ld=None,og='/assets/img/og.jpg',pre='',mo=()):
 FACTS='''<section style="padding:46px 0"><div class="wrap"><div class="facts"><div class="fact rv"><b>7 años</b><span>de experiencia en instalaciones eléctricas</span></div><div class="fact rv"><b>Express</b><span>Te atendemos de inmediato, sin tiempo de espera</span></div><div class="fact rv"><b>$300</b><span>costo de la visita</span></div></div></div></section>'''
 def cta(msg):
     return f'''<section id="contacto"><div class="wrap"><div class="cta rv"><span class="eyebrow">Contacto</span><h2>¿Tienes una falla o un proyecto eléctrico?</h2><p>Servicio express: te atendemos de inmediato. Escríbenos por WhatsApp o llámanos, cuéntanos qué necesitas y mándanos fotos si puedes. La visita cuesta $300. Atendemos Guadalajara, Zapopan, Tonalá, Tlaquepaque y todo Jalisco.</p>
-<div class="btns"><a class="btn btn-wa" href="{wa(msg)}" rel="noopener">💬 WhatsApp {TELF}</a><a class="btn btn-primary" href="tel:+52{TEL}">📞 Llamar ahora</a></div></div></div></section>'''
+<div class="btns"><a class="btn btn-wa" href="{wa(msg)}" rel="noopener">{I('chat')} WhatsApp {TELF}</a><a class="btn btn-primary" href="tel:+52{TEL}">{I('phone')} Llamar ahora</a></div></div></div></section>'''
 
-SERV=[('🔌','Electricista a domicilio','Revisamos y resolvemos fallas eléctricas en tu casa o negocio.'),
-('🏠','Instalaciones residenciales','Casas, departamentos y residencias: instalación nueva o renovación completa.'),
-('🏪','Instalaciones comerciales','Locales, oficinas, consultorios y plazas con la carga bien repartida.'),
-('🏭','Instalaciones industriales','Naves, bodegas y talleres: potencia, tableros y alimentación de maquinaria.'),
-('🍽️','Diseño eléctrico para restaurantes','Cálculo de cargas y distribución para cocina, refrigeración y comedor.'),
-('⚡','Corto circuito y fallas','Pastillas que se botan, olor a quemado, luz que parpadea: lo diagnosticamos.'),
-('🧵','Cableado y centros de carga','Cambio de cableado viejo y centros de carga nuevos y seguros.'),
-('🎛️','Tableros eléctricos','Armado, ampliación y orden de tableros y pastillas.'),
-('🔘','Contactos y apagadores','Instalación, cambio y reubicación de contactos, apagadores y salidas.'),
-('💡','Iluminación LED','Luz funcional y decorativa para interiores, fachadas y áreas de trabajo.'),
-('🛠️','Mantenimiento preventivo','Detectamos sobrecargas y puntos calientes antes de que paren tu operación.'),
-('🌐','Tierras físicas y protección','Sistemas de tierra y protección contra descargas.')]
+SERV=[(I('plug'),'Electricista a domicilio','Revisamos y resolvemos fallas eléctricas en tu casa o negocio.'),
+(I('house'),'Instalaciones residenciales','Casas, departamentos y residencias: instalación nueva o renovación completa.'),
+(I('store'),'Instalaciones comerciales','Locales, oficinas, consultorios y plazas con la carga bien repartida.'),
+(I('factory'),'Instalaciones industriales','Naves, bodegas y talleres: potencia, tableros y alimentación de maquinaria.'),
+(I('utensils'),'Diseño eléctrico para restaurantes','Cálculo de cargas y distribución para cocina, refrigeración y comedor.'),
+(I('zap'),'Corto circuito y fallas','Pastillas que se botan, olor a quemado, luz que parpadea: lo diagnosticamos.'),
+(I('cable'),'Cableado y centros de carga','Cambio de cableado viejo y centros de carga nuevos y seguros.'),
+(I('sliders'),'Tableros eléctricos','Armado, ampliación y orden de tableros y pastillas.'),
+(I('toggle'),'Contactos y apagadores','Instalación, cambio y reubicación de contactos, apagadores y salidas.'),
+(I('bulb'),'Iluminación LED','Luz funcional y decorativa para interiores, fachadas y áreas de trabajo.'),
+(I('wrench'),'Mantenimiento preventivo','Detectamos sobrecargas y puntos calientes antes de que paren tu operación.'),
+(I('ground'),'Tierras físicas y protección','Sistemas de tierra y protección contra descargas.')]
 def serv_grid():
     return '<div class="grid g4">'+''.join(f'<div class="card rv"><div class="ic">{i}</div><h3>{t}</h3><p>{d}</p></div>' for i,t,d in SERV)+'</div>'
 
@@ -187,20 +222,20 @@ home+=header('index.html')+f'''<main id="contenido">
 <video data-src="/assets/video/foco-scroll.mp4" data-src-m="/assets/video/foco-scroll-m.mp4" data-poster-m="/assets/img/foco-poster-m.webp" data-scrub muted playsinline preload="auto" aria-hidden="true"></video>
 <div class="shade"></div><div class="bar"></div>
 <div class="stage s1 on"><div class="wrap"><span class="eyebrow">Electricistas en Jalisco</span><h1>Cuando la luz falla, <span class="amber">nosotros la prendemos.</span></h1><p>Servicio express: te atendemos de inmediato. Electricistas en Guadalajara, Zapopan, Tonalá, Tlaquepaque y todo Jalisco.</p>
-<div class="btns"><a class="btn btn-primary" href="{wa('Hola Serví luz, necesito un electricista')}" rel="noopener">💬 Cotiza por WhatsApp</a><a class="btn btn-ghost" href="tel:+52{TEL}">📞 {TELF}</a></div></div></div>
+<div class="btns"><a class="btn btn-primary" href="{wa('Hola Serví luz, necesito un electricista')}" rel="noopener">{I('chat')} Cotiza por WhatsApp</a><a class="btn btn-ghost" href="tel:+52{TEL}">{I('phone')} {TELF}</a></div></div></div>
 <div class="stage"><div class="wrap"><span class="eyebrow">01 · Conexión bien hecha</span><h2>Cada empalme, <span class="amber">como debe ser.</span></h2><p>Cableado, empalmes y cajas de conexión con orden y seguridad. Nada de parches.</p></div></div>
 <div class="stage"><div class="wrap"><span class="eyebrow">02 · Resultado</span><h2>Luz estable. <span class="amber">Tranquilidad total.</span></h2><p>Instalaciones eléctricas para tu casa, tu restaurante o tu industria.</p>
-<div class="btns"><a class="btn btn-primary" href="#especialidades">Ver especialidades</a><a class="btn btn-wa" href="{wa('Hola Serví luz, necesito un electricista')}" rel="noopener">💬 WhatsApp</a></div></div></div>
+<div class="btns"><a class="btn btn-primary" href="#especialidades">Ver especialidades</a><a class="btn btn-wa" href="{wa('Hola Serví luz, necesito un electricista')}" rel="noopener">{I('chat')} WhatsApp</a></div></div></div>
 <div class="scroll-hint"><span>Desliza</span><i></i></div>
 </div></section>
-<div class="strip" aria-hidden="true"><div class="row">{''.join('<span><b>⚡</b>'+t+'</span>' for t in (['Guadalajara','Zapopan','Tonalá','Tlaquepaque','Todo Jalisco']*4))}</div></div>
+<div class="strip" aria-hidden="true"><div class="row">{''.join('<span><b>'+I('zap',14)+'</b>'+t+'</span>' for t in (['Guadalajara','Zapopan','Tonalá','Tlaquepaque','Todo Jalisco']*4))}</div></div>
 
 {FACTS}
 <section id="especialidades"><div class="wrap"><span class="eyebrow rv">Especialidades</span><h2 class="rv">Una solución eléctrica para cada tipo de lugar</h2>
 <div class="grid g3">
-<a class="card big rv" href="/restaurantes/"><div><div class="ic">🍽️</div><h3>Restaurantes</h3><p>Diseño eléctrico y distribución de cargas para cocinas, refrigeración y comedor.</p></div><span class="more">Ver más →</span></a>
-<a class="card big rv" href="/residencias/"><div><div class="ic">🏠</div><h3>Casas y residencias</h3><p>Fallas, cableado viejo, centros de carga, contactos y obra nueva.</p></div><span class="more">Ver más →</span></a>
-<a class="card big rv" href="/industrial/"><div><div class="ic">🏭</div><h3>Industrial y negocios</h3><p>Bodegas, naves, talleres y oficinas: tableros, potencia y mantenimiento.</p></div><span class="more">Ver más →</span></a>
+<a class="card big rv" href="/restaurantes/"><div><div class="ic">{I('utensils')}</div><h3>Restaurantes</h3><p>Diseño eléctrico y distribución de cargas para cocinas, refrigeración y comedor.</p></div><span class="more">Ver más →</span></a>
+<a class="card big rv" href="/residencias/"><div><div class="ic">{I('house')}</div><h3>Casas y residencias</h3><p>Fallas, cableado viejo, centros de carga, contactos y obra nueva.</p></div><span class="more">Ver más →</span></a>
+<a class="card big rv" href="/industrial/"><div><div class="ic">{I('factory')}</div><h3>Industrial y negocios</h3><p>Bodegas, naves, talleres y oficinas: tableros, potencia y mantenimiento.</p></div><span class="more">Ver más →</span></a>
 </div></div></section>
 
 <section style="background:var(--panel)"><div class="wrap split">
@@ -230,7 +265,7 @@ def sub(fn,path,title,desc,h1,lead,img,crumb,items,body,extra_title,msg,video=Fa
     bc={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Inicio","item":BASE+"/"},{"@type":"ListItem","position":2,"name":crumb,"item":BASE+path}]}
     s=head(title,desc,path,[bc],mo=('picture-develops',) if dev else (),pre='<link rel="preload" as="image" href="'+img+'" fetchpriority="high">')+header(fn)
     s+=f'''<main id="contenido"><section class="sub" style="--img:url({img})"><div class="wrap"><p class="crumb"><a href="/">Inicio</a> › {crumb}</p><span class="eyebrow">{extra_title}</span><h1>{h1}</h1><p class="lead">{lead}</p>
-<div class="btns"><a class="btn btn-primary" href="{wa(msg)}" rel="noopener">💬 Cotiza por WhatsApp</a><a class="btn btn-ghost" href="tel:+52{TEL}">📞 {TELF}</a></div></div></section>
+<div class="btns"><a class="btn btn-primary" href="{wa(msg)}" rel="noopener">{I('chat')} Cotiza por WhatsApp</a><a class="btn btn-ghost" href="tel:+52{TEL}">{I('phone')} {TELF}</a></div></div></section>
 {scrub}<section><div class="wrap split"><div class="prose rv">{body}</div>
 <div class="vid rv">{vid if vid else ('<video data-src="/assets/video/tablero.mp4" data-src-m="/assets/video/tablero-m.mp4" data-poster-m="/assets/img/tablero-poster-m.webp" poster="/assets/img/tablero-poster.webp" data-auto autoplay muted loop playsinline preload="metadata" aria-label="Instalación de tablero eléctrico"></video><span class="live">EN OBRA</span>') if video else ('<img src="/assets/img/foco-poster.webp" alt="Instalación eléctrica con foco encendido" loading="lazy" width="1280" height="720">')}</div></div></section>
 {dev}{extra}<section style="background:var(--panel)"><div class="wrap"><span class="eyebrow rv">Qué hacemos</span><h2 class="rv">{extra_title}: servicios</h2><div class="grid g3">'''
@@ -253,13 +288,13 @@ SCRUB_REST='''<section class="scrub tall" data-stops=".4,.7" aria-label="Instala
 <div class="stage on"><div class="wrap"><span class="eyebrow">01 · Conexiones seguras</span><h2>Cada empalme, <span class="amber">bien hecho.</span></h2><p>En tu cocina no hay lugar para improvisar: conexiones firmes y cubiertas.</p></div></div>
 <div class="stage"><div class="wrap"><span class="eyebrow">02 · Tablero ordenado</span><h2>Cables <span class="amber">ordenados y cinchados.</span></h2><p>Cada circuito identificado y cada cable en su lugar.</p></div></div>
 <div class="stage"><div class="wrap"><span class="eyebrow">03 · Todo en verde</span><h2>Tu cocina, <span class="amber">lista para servir.</span></h2><p>Instalación terminada y probada antes de entregarla.</p>
-<div class="btns"><a class="btn btn-wa" href="'''+WA_REST+'''" rel="noopener">💬 Cotiza por WhatsApp</a></div></div></div>
+<div class="btns"><a class="btn btn-wa" href="'''+WA_REST+'''" rel="noopener">'''+I('chat')+''' Cotiza por WhatsApp</a></div></div></div>
 <div class="scroll-hint"><span>Desliza</span><i></i></div></div></section>'''
 VID_CANALETA='''<video data-src="/assets/video/canaleta.mp4" data-src-m="/assets/video/canaleta-m.mp4" data-poster-m="/assets/img/canaleta-poster-m.webp" poster="/assets/img/canaleta-poster.webp" data-auto autoplay muted loop playsinline preload="metadata" aria-label="Electricista instalando canaleta de plástico para cubrir los cables"></video><span class="live">CERO CABLES EXPUESTOS</span>'''
 sub('restaurantes.html','/restaurantes/','Electricista para Restaurantes en Guadalajara y Jalisco | Serví luz',
  'Diseño eléctrico y distribución de cargas para restaurantes, cafeterías, bares y cocinas industriales en Guadalajara, Zapopan, Tlaquepaque, Tonalá y Jalisco.',
  'Electricista para <span class="amber">restaurantes</span> en Guadalajara','Diseño eléctrico y distribución de cargas para que tu cocina no pare en pleno servicio.','/assets/img/restaurante-hero.webp','Restaurantes',
- [('📐','Diseño eléctrico de cocina','Cálculo de cargas y distribución de circuitos desde cero o corrección de lo existente.'),('🍳','Equipo de alto consumo','Circuitos para estufas, freidoras, hornos, campanas y máquinas de hielo.'),('❄️','Refrigeración','Circuitos independientes para cámaras de refrigeración y congeladores.'),('🎛️','Tableros y centros de carga','Instalación y ampliación para soportar tu operación completa.'),('💡','Iluminación LED','Comedor, barra, fachada y cocina con la luz que cada área necesita.'),('🛠️','Mantenimiento preventivo','Revisión periódica para evitar paros por fallas eléctricas.')],
+ [(I('ruler'),'Diseño eléctrico de cocina','Cálculo de cargas y distribución de circuitos desde cero o corrección de lo existente.'),(I('pot'),'Equipo de alto consumo','Circuitos para estufas, freidoras, hornos, campanas y máquinas de hielo.'),(I('snow'),'Refrigeración','Circuitos independientes para cámaras de refrigeración y congeladores.'),(I('sliders'),'Tableros y centros de carga','Instalación y ampliación para soportar tu operación completa.'),(I('bulb'),'Iluminación LED','Comedor, barra, fachada y cocina con la luz que cada área necesita.'),(I('wrench'),'Mantenimiento preventivo','Revisión periódica para evitar paros por fallas eléctricas.')],
  '''<h2>Un restaurante vive de que no se le vaya la luz</h2><p>Si se botan las pastillas en plena hora pico, pierdes ventas y clientes. En Serví luz hacemos el <strong>diseño eléctrico de tu cocina</strong> desde cero o corregimos la instalación que ya tienes: cálculo de cargas, distribución de circuitos, tableros, centros de carga y tierras físicas, pensados para equipo pesado como estufas, freidoras, hornos, campanas y cámaras de refrigeración.</p><p><strong>Instalación limpia, sin cables expuestos:</strong> dejamos el cableado ordenado, cinchado y protegido dentro de canaleta o ducto, con las cubiertas cerradas, para que tu cocina se vea profesional y segura.</p><ul class="checks"><li>Cables ordenados y cinchados</li><li>Canaleta de plástico y ducto en todo el recorrido</li><li>Tableros con cubierta y circuitos identificados</li><li>Trabajo con orden y limpieza, respetando tus horarios</li></ul><p style="margin-top:18px">Atendemos restaurantes, cafeterías, bares, taquerías y cocinas industriales en Guadalajara, Zapopan, Tlaquepaque, Tonalá y todo Jalisco.</p>''',
  'Restaurantes','Hola Serví luz, tengo un restaurante y necesito electricista',True,scrub=SCRUB_REST,vid=VID_CANALETA,extra=antes('De cables regados a una cocina <span class="amber">ordenada y segura</span>','Así transformamos la instalación de un restaurante: sin cables expuestos, con todo cinchado, en canaleta y con el tablero cerrado.'))
 
@@ -270,14 +305,14 @@ CASA_VIDEOS='''<section><div class="wrap"><span class="eyebrow rv">Iluminación 
 sub('residencias.html','/residencias/','Electricista para Casas y Residencias en Guadalajara | Serví luz',
  'Electricista para casas, departamentos y residencias en Guadalajara, Zapopan, Tlaquepaque y Tonalá: corto circuito, cableado, centros de carga, contactos y LED.',
  'Electricista para <span class="amber">casas y residencias</span>','Desde la falla chiquita hasta la instalación completa de tu hogar, bien hecha y segura.','/assets/img/foco-poster.webp','Casas y residencias',
- [('⚡','Corto circuito y fallas','Pastillas que se botan, olor a quemado, contactos que calientan, luz que parpadea.'),('🧵','Cambio de cableado','Renovamos cableado viejo o peligroso en casas antiguas.'),('🎛️','Centro de carga y pastillas','Instalación y cambio de centros de carga y pastillas.'),('🔘','Contactos y apagadores','Nuevos, cambiados o reubicados en cualquier parte de tu casa.'),('💡','Lámparas, LED y ventiladores','Instalación de iluminación, ventiladores y minisplits.'),('🏗️','Obra nueva y remodelación','Cableado para construcción y remodelaciones, con constructoras y arquitectos.')],
+ [(I('zap'),'Corto circuito y fallas','Pastillas que se botan, olor a quemado, contactos que calientan, luz que parpadea.'),(I('cable'),'Cambio de cableado','Renovamos cableado viejo o peligroso en casas antiguas.'),(I('sliders'),'Centro de carga y pastillas','Instalación y cambio de centros de carga y pastillas.'),(I('toggle'),'Contactos y apagadores','Nuevos, cambiados o reubicados en cualquier parte de tu casa.'),(I('bulb'),'Lámparas, LED y ventiladores','Instalación de iluminación, ventiladores y minisplits.'),(I('hardhat'),'Obra nueva y remodelación','Cableado para construcción y remodelaciones, con constructoras y arquitectos.')],
  '''<h2>La luz de tu casa tiene que ser segura</h2><p>Se botan las pastillas, huele a quemado, hay corto circuito o los contactos calientan: no lo dejes para después. Revisamos, encontramos el origen del problema y lo arreglamos bien, <strong>no a medias</strong>.</p><p>Si tu casa es antigua, tiene muchos años con la misma instalación o le agregaste aparatos nuevos como minisplits, vale la pena una revisión eléctrica antes de que haya un susto. También trabajamos con constructoras, arquitectos y dueños que están levantando o remodelando su casa.</p><p>Servicio de electricista a domicilio en Guadalajara, Zapopan, Tlaquepaque, Tonalá y todo Jalisco.</p>''',
  'Casas y residencias','Hola Serví luz, necesito electricista para mi casa',extra=CASA_VIDEOS,dev=develop('Tu casa, tranquila','Prendes el switch <span class="amber">y todo funciona.</span>','Sin chispazos, sin olor a quemado, sin pastillas que se botan a media noche. Esa tranquilidad es lo que dejamos en cada casa.','dev-casa','Foco encendido sobre una pared de ladrillo con la conexión cubierta y terminada','Hola Serví luz, necesito electricista para mi casa'))
 
 sub('industrial.html','/industrial/','Electricista Industrial y para Negocios en Jalisco | Serví luz',
  'Instalaciones y mantenimiento eléctrico industrial y comercial para bodegas, naves, talleres y oficinas en Guadalajara, Zapopan, Tlaquepaque, Tonalá y Jalisco.',
  'Electricista <span class="amber">industrial y para negocios</span>','Tableros, potencia y mantenimiento para que tu operación no se detenga.','/assets/img/tablero-poster.webp','Industrial y negocios',
- [('🎛️','Tableros y centros de control','Armado, ampliación y ordenamiento de tableros eléctricos.'),('🏭','Alimentación de maquinaria','Cableado de potencia y canalización para equipo industrial.'),('💡','Iluminación industrial y LED','Naves, bodegas, talleres y oficinas bien iluminadas.'),('🌐','Tierras físicas y protección','Sistemas de tierra y protección contra descargas.'),('⚖️','Balanceo de cargas','Repartimos la carga para evitar sobrecargas y disparos.'),('🛠️','Mantenimiento preventivo y correctivo','Detectamos puntos calientes y falsos contactos a tiempo.')],
+ [(I('sliders'),'Tableros y centros de control','Armado, ampliación y ordenamiento de tableros eléctricos.'),(I('factory'),'Alimentación de maquinaria','Cableado de potencia y canalización para equipo industrial.'),(I('bulb'),'Iluminación industrial y LED','Naves, bodegas, talleres y oficinas bien iluminadas.'),(I('ground'),'Tierras físicas y protección','Sistemas de tierra y protección contra descargas.'),(I('scale'),'Balanceo de cargas','Repartimos la carga para evitar sobrecargas y disparos.'),(I('wrench'),'Mantenimiento preventivo y correctivo','Detectamos puntos calientes y falsos contactos a tiempo.')],
  '''<h2>En un negocio, una falla eléctrica es producción detenida</h2><p>Hacemos instalaciones y mantenimiento eléctrico industrial y comercial con orden, seguridad y buen acabado: <strong>tableros, canalización, cableado de potencia, alimentación de maquinaria, iluminación y tierras físicas</strong>.</p><p>Atendemos bodegas y naves industriales, talleres y fábricas, locales comerciales y plazas, oficinas, consultorios, escuelas y clínicas, además de obras nuevas y ampliaciones. Trabajamos por proyecto o por servicio, respetando tus tiempos.</p><p>Si necesitas diseño eléctrico, ampliar tu carga, instalar maquinaria nueva o corregir una instalación que ya no da abasto, platícanos tu caso.</p>''',
  'Industrial y negocios','Hola Serví luz, necesito servicio eléctrico industrial para mi negocio',True,dev=develop('Tu operación, en verde','Tablero en orden, <span class="amber">producción sin parar.</span>','Cada circuito identificado, cada carga en su lugar y todo probado antes de entregar. Para que tu negocio no se detenga por una falla eléctrica.','dev-tablero','Tablero eléctrico ordenado con todos los circuitos identificados y el indicador en verde','Hola Serví luz, necesito servicio eléctrico industrial para mi negocio'),extra=antes('De cables expuestos a una instalación <span class="amber">limpia y profesional</span>','Ordenamos y protegemos instalaciones de bodegas, talleres y negocios: sin cables regados, con canaleta, tableros cerrados y circuitos identificados.'))
 
@@ -314,7 +349,7 @@ def blog_pages():
         s+=f'<main id="contenido"><section class="sub"><div class="wrap"><p class="crumb"><a href="/">Inicio</a> › <a href="/blog/">Blog</a> › {p["cat"]}</p><span class="eyebrow">{p["cat"]}</span><h1>{p["title"]}</h1><p class="lead">{p["desc"]}</p><p class="meta"><time datetime="{p["date"]}">{fdate(p["date"])}</time> · {p["min"]} min de lectura · Por Serví luz</p></div></section>'
         s+=f'<section class="nofo art"><div class="wrap" style="max-width:780px"><article class="prose">{md_body(p["body"])}'
         if p['faq']: s+='<h2>Preguntas frecuentes</h2>'+''.join(f'<details><summary>{q}</summary><p>{html.escape(a,quote=False)}</p></details>' for q,a in p['faq'])
-        s+=f'<p class="btns" style="margin-top:28px"><a class="btn btn-wa" href="{wa(wam)}" rel="noopener">💬 Escríbenos por WhatsApp</a><a class="btn btn-primary" href="tel:+52{TEL}">📞 {TELF}</a></p></article></div></section>'
+        s+=f'<p class="btns" style="margin-top:28px"><a class="btn btn-wa" href="{wa(wam)}" rel="noopener">{I('chat')} Escríbenos por WhatsApp</a><a class="btn btn-primary" href="tel:+52{TEL}">{I('phone')} {TELF}</a></p></article></div></section>'
         rel=[q for q in POSTS if q['slug']!=p['slug']]
         rel.sort(key=lambda q:(q['cat']!=p['cat'],q['date']),reverse=False)
         rel=sorted([q for q in POSTS if q['slug']!=p['slug']],key=lambda q:(q['cat']!=p['cat'],-int(q['date'].replace('-',''))))[:3]
@@ -328,7 +363,7 @@ import datetime
 blog_pages()
 
 # 404, robots, sitemap, render.yaml
-open(OUT+'/404.html','w').write(head('Página no encontrada | Serví luz','Página no encontrada','/404.html').replace('index,follow','noindex')+header('')+f'<main id="contenido"><section class="sub"><div class="wrap"><h1>Se fue la luz en esta página <span class="amber">⚡</span></h1><p class="lead">No encontramos lo que buscas, pero el servicio sigue prendido.</p><div class="btns"><a class="btn btn-primary" href="/">Ir al inicio</a><a class="btn btn-wa" href="{wa("Hola Serví luz")}">💬 WhatsApp</a></div></div></section></main>'+footer()+'</body></html>')
+open(OUT+'/404.html','w').write(head('Página no encontrada | Serví luz','Página no encontrada','/404.html').replace('index,follow','noindex')+header('')+f'<main id="contenido"><section class="sub"><div class="wrap"><h1>Se fue la luz en esta página <span class="amber">{I('zap')}</span></h1><p class="lead">No encontramos lo que buscas, pero el servicio sigue prendido.</p><div class="btns"><a class="btn btn-primary" href="/">Ir al inicio</a><a class="btn btn-wa" href="{wa("Hola Serví luz")}">{I('chat')} WhatsApp</a></div></div></section></main>'+footer()+'</body></html>')
 open(OUT+'/robots.txt','w').write(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n')
 open(OUT+'/sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{BASE}{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod><changefreq>monthly</changefreq><priority>{pr}</priority></url>\n' for p,pr in [('/','1.0'),('/restaurantes/','0.9'),('/residencias/','0.9'),('/industrial/','0.9'),('/blog/','0.8')])+''.join(f'<url><loc>{BASE}{q["path"]}</loc><lastmod>{q.get("updated",q["date"])}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>\n' for q in POSTS)+'</urlset>\n')
 open(OUT+'/render.yaml','w').write('''services:
