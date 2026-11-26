@@ -101,6 +101,12 @@ def load_posts():
 POSTS=load_posts()
 def post_card(p):
     return f'<a class="card post rv" href="{p["path"]}"><div><span class="eyebrow">{p["cat"]}</span><h3>{p["title"]}</h3><p>{p["desc"]}</p></div><span class="more">Leer · {p["min"]} min →</span></a>'
+
+# ---------- Galería "Nuestro trabajo" (agregar fotos nuevas a esta lista: archivo en assets/img, ancho y alto)
+GALERIA=[('trabajo-tablero-abb','Tablero eléctrico con interruptor termomagnético trifásico y cables ordenados dentro de gabinete metálico',1179,1571,'Tablero con protección trifásica')]
+def galeria():
+    figs=''.join(f'<figure class="gal-i rv"><img src="/assets/img/{n}.webp" srcset="/assets/img/{n}-m.webp 640w, /assets/img/{n}.webp {w}w" sizes="(max-width:768px) 90vw, 360px" alt="{a}" width="{w}" height="{h}" loading="lazy" decoding="async"><figcaption>{I("zap",14)} {c}</figcaption></figure>' for n,a,w,h,c in GALERIA)
+    return f'<section id="trabajo"><div class="wrap"><span class="eyebrow rv">Nuestro trabajo</span><h2 class="rv">Instalaciones reales, hechas con orden</h2><p class="lead rv">Fotos de trabajos de Serví luz. Cada conexión identificada, cada cable en su lugar.</p><div class="gal">{figs}</div></div></section>\n'
 def blog_teaser():
     if not POSTS: return ''
     return '<section><div class="wrap"><span class="eyebrow rv">Blog</span><h2 class="rv">Consejos de electricistas para tu casa y tu negocio</h2><div class="grid g3">'+''.join(post_card(p) for p in POSTS[:3])+'</div><p class="rv" style="margin-top:22px"><a class="btn btn-ghost" href="/blog/">Ver todos los artículos</a></p></div></section>\n'
@@ -254,7 +260,7 @@ home+=header('index.html')+f'''<main id="contenido">
 <section><div class="wrap"><span class="eyebrow rv">Cómo funciona</span><h2 class="rv">Tres pasos y listo</h2>
 <div class="grid g3 steps"><div class="step rv"><h3>Escríbenos</h3><p>Cuéntanos qué pasa por WhatsApp o llamada. Fotos ayudan mucho.</p></div><div class="step rv"><h3>Revisamos y cotizamos</h3><p>Diagnosticamos la falla o el proyecto y te damos una cotización clara.</p></div><div class="step rv"><h3>Resolvemos</h3><p>Hacemos el trabajo con orden y lo dejamos funcionando seguro.</p></div></div></div></section>
 
-{blog_teaser()}<section style="background:var(--panel)"><div class="wrap" style="max-width:820px"><span class="eyebrow rv">Preguntas frecuentes</span><h2 class="rv">Lo que más nos preguntan</h2>{faq()}</div></section>
+{galeria()}{blog_teaser()}<section style="background:var(--panel)"><div class="wrap" style="max-width:820px"><span class="eyebrow rv">Preguntas frecuentes</span><h2 class="rv">Lo que más nos preguntan</h2>{faq()}</div></section>
 {cta('Hola Serví luz, necesito un electricista')}
 </main>'''+footer()+'</body></html>'
 home=home.replace('</body></html>',MO_TAIL)
