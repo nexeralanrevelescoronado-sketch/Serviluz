@@ -29,7 +29,6 @@ Sitio estático generado con `python3 _src/gen.py` (escribe en la raíz del repo
 - Tono claro y cercano, español de México. Un tema nuevo por artículo; no repetir los ya publicados.
 
 ## Temas pendientes (tomar el siguiente, quitarlo de la lista al publicarlo)
-- Centro de carga: qué es, cuándo cambiarlo y señales de que el tuyo ya no da
 - Apagones y variaciones de voltaje en temporada de lluvias en Jalisco: cómo proteger tus aparatos
 - Iluminación LED para tu negocio: cómo elegir la luz por área
 - Contactos que se calientan o chispean: causas y qué hacer
